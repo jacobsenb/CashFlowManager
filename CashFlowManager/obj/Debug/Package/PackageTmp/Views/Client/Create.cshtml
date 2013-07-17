@@ -1,0 +1,36 @@
+﻿@model CashFlowManager.Models.ClientModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (@Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <h2  class="subTitle">Add Client:</h2>
+    <fieldset>
+        <legend></legend>
+    
+        <div class="editor-label">
+            @Html.HiddenFor(model => model.SelectedClient.Id)
+        </div>
+        <div class="editorlbl">
+            @Html.LabelFor(model => model.SelectedClient.Name)
+            @Html.EditorFor(model => model.SelectedClient.Name)
+            @Html.ValidationMessageFor(model => model.SelectedClient.Name)
+        </div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+
+    </fieldset>
+    <div>
+    @Html.ActionLink("Back to List", "Index","Client",new {practiceId= Model.PracticeId},null)
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

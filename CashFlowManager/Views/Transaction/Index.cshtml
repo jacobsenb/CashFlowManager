@@ -1,0 +1,70 @@
+﻿@model CashFlowManager.Models.TransactionModel
+
+@{
+    ViewBag.Title = "Transactions";
+}
+
+<h2 class="subTitle">Transactions</h2>
+<style >
+    th{ font-size: 12pt;
+        font-weight: bold;
+        border-bottom: 10pt;
+        border-bottom-color: black;
+       
+    }
+</style>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new { clientId = Model.ClientId.ToString(),practiceId = Model.PracticeId.ToString() })
+        @Html.ActionLink("Back to Client", "Edit", "Client", new {clientId= Model.ClientId.ToString(), practiceId = Model.PracticeId.ToString() }, null)
+</p>
+<h3>Expense:</h3>
+<table>
+    <tr class="tableHeader">
+        <th>Frequency</th>
+        <th>Start Date</th>
+        <th>Narration</th>
+        <th>Amount</th>
+    </tr>
+    @foreach (var item in Model.ExpenseTransactions)
+    {
+        <tr>
+            <td class="tableDataStr">@Html.DisplayFor(i => item.ScheduleType)</td>
+            <td class="tableDataStr">@Html.DisplayFor(i => item.StartDate)</td>
+            <td class="tableDataStr">@Html.DisplayFor(i => item.Narration)</td>
+            <td class="tableDataAmt">@Html.DisplayFor(i => item.Amount)</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit","Transaction", new { transactionId = item.Id.ToString(),clientId= item.ClientId.ToString(),practiceId = Model.PracticeId.ToString() },null)
+                @Html.ActionLink("Delete", "Delete","Transaction", new { transactionId = item.Id.ToString(),clientId= item.ClientId.ToString(),practiceId = Model.PracticeId.ToString() },null)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<h3>Income:</h3>
+<table>
+    <tr class="tableHeader">
+        <th>Frequency</th>
+        <th>Start Date</th>
+        <th>Narration</th>
+        <th>Amount</th>
+    </tr>
+    @foreach (var item in Model.IncomeTransactions)
+    {
+        <tr>
+            <td class="tableDataStr">@Html.DisplayFor(i => item.ScheduleType)</td>
+            <td class="tableDataStr">@Html.DisplayFor(i => item.StartDate)</td>
+            <td class="tableDataStr">@Html.DisplayFor(i => item.Narration)</td>
+            <td class="tableDataAmt">@Html.DisplayFor(i => item.Amount)</td>
+            <td>
+            @Html.ActionLink("Edit", "Edit","Transaction", new { transactionId = item.Id.ToString(),clientId= item.ClientId.ToString(),practiceId = Model.PracticeId.ToString() },null)
+            @Html.ActionLink("Delete", "Delete","Transaction", new { transactionId = item.Id.ToString(),clientId= item.ClientId.ToString(),practiceId = Model.PracticeId.ToString() },null)
+        </tr>
+    }
+
+</table>
+<p></p>
+<div>
+    @Html.ActionLink("Back to Client", "Edit", "Client", new {clientId= Model.ClientId.ToString(), practiceId = Model.PracticeId.ToString() }, null)
+</div>

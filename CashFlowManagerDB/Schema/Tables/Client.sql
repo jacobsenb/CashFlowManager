@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Client]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [Name] NVARCHAR(255) NULL, 
+    [PracticeId] UNIQUEIDENTIFIER NULL, 
+    CONSTRAINT [FK_Client_Practice] FOREIGN KEY ([PracticeId]) REFERENCES [Practice]([Id])
+)

@@ -1,0 +1,35 @@
+﻿@model CashFlowManager.Models.PracticeModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <h2 class="subTitle">New Practice:</h2>
+    <fieldset>
+        <legend>TransactionModel</legend>
+        <div class="editor-label">
+            @Html.HiddenFor(model => model.SelectedPractice.Id)
+        </div>
+        <div class="editorlbl">
+            @Html.LabelFor(model => model.SelectedPractice.Name)
+            @Html.EditorFor(model => model.SelectedPractice.Name)
+            @Html.ValidationMessageFor(model => model.SelectedPractice.Name)
+        </div>
+               <p>
+            <input class="button" type="submit" value="Create" />
+        </p>
+         </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index","Setup")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

@@ -1,0 +1,31 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[Schedule]
+       [dbo].[Transaction]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The type for column Id in table [dbo].[Schedule] is currently  INT IDENTITY (1, 1) NOT NULL but is being changed to 
+         UNIQUEIDENTIFIER NOT NULL. There is no implicit or explicit conversion.
+       The type for column Id in table [dbo].[Transaction] is currently  INT NOT NULL but is being changed to  UNIQUEIDENTIFIER
+         NOT NULL. There is no implicit or explicit conversion.
+       The type for column ScheduleId in table [dbo].[Transaction] is currently  INT NULL but is being changed to 
+         UNIQUEIDENTIFIER NULL. There is no implicit or explicit conversion.
+
+** User actions
+     Table rebuild
+       [dbo].[Schedule] (Table)
+       [dbo].[Transaction] (Table)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_Transaction_Schedule] (Foreign Key)
+     Create
+       [dbo].[FK_Transaction_Schedule] (Foreign Key)
+
+The type for column Id in table [dbo].[Schedule] is currently  INT IDENTITY (1, 1) NOT NULL but is being changed to  UNIQUEIDENTIFIER NOT NULL. There is no implicit or explicit conversion.
+The type for column Id in table [dbo].[Transaction] is currently  INT NOT NULL but is being changed to  UNIQUEIDENTIFIER NOT NULL. There is no implicit or explicit conversion.
+The type for column ScheduleId in table [dbo].[Transaction] is currently  INT NULL but is being changed to  UNIQUEIDENTIFIER NULL. There is no implicit or explicit conversion.
+

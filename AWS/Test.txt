@@ -1,0 +1,33 @@
+# For detailed explanation of how these config files should be used and created please see the developer guide here:
+#  http://docs.amazonwebservices.com/AWSToolkitVS/latest/UserGuide/tkv-deployment-tool.html
+
+# Edit the parameter line below to set the path to the deployment archive or use
+#     /DDeploymentPackage=value
+# on the awsdeploy.exe command line for more flexibility.
+# DeploymentPackage = <-- path to web deployment archive -->
+
+# Instead of embedding the AWSAccessKey and AWSSecretKey to be used to deploy
+# artifacts we recommend that you consider using the /DAWSAccessKey and
+# /DAWSSecretKey command line parameter overrides.
+AWSAccessKey = AKIAIHMZ7TXVALLPBMXQ
+AWSSecretKey = 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
+KeyPair = <Create new key pair...>
+Region = ap-southeast-2
+StackName = CashFlowManagerApp
+Template = SingleInstance
+UploadBucket = awsdeployment-ap-southeast-2-akiaihmz7txvallpbmxq
+
+Container.ApplicationHealthcheckPath = /
+Container.Enable32BitApplications = False
+Container.TargetRuntime = v4.0
+Container.Type = 64bit Windows Server 2012 running IIS 8
+
+Environment.AWSAccessKey = AKIAIHMZ7TXVALLPBMXQ
+Environment.AWSSecretKey = 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
+
+Settings.CreationTimeout = 0
+Settings.RollbackOnFailure = true
+
+Template.InstanceType = t1.micro
+Template.SecurityGroup = default
+

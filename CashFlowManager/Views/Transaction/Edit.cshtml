@@ -1,0 +1,90 @@
+﻿@model CashFlowManager.Models.TransactionModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Edit Transaction:</h2>
+
+@using (@Html.BeginForm() )
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>TransactionModel</legend>
+
+        <div class="editor-label">
+            @Html.HiddenFor(model => model.SelectedTransaction.Id)
+        </div>
+        <div class="editor-label">
+            @Html.HiddenFor(model => model.ClientId)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SelectedTransaction.Narration)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SelectedTransaction.Narration)
+            @Html.ValidationMessageFor(model => model.SelectedTransaction.Narration)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SelectedTransaction.Amount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SelectedTransaction.Amount)
+            @Html.ValidationMessageFor(model => model.SelectedTransaction.Amount)
+        </div>
+        <div class="editor-label">
+            <table>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.SelectedTransaction.ScheduleId)
+                    </td>
+                    <td id="Frequency" >
+                        @Html.DropDownListFor(model => model.SelectedSchedule, new SelectList(Model.Schedules, "Id", "Name"))
+                    </td>
+                    <td>
+                    </td>
+                    <td id="StartDatelbl" >
+                        @Html.LabelFor(model => model.SelectedTransaction.StartDate)
+                    </td>
+                    <td id="StartDateEdt" >
+                        @Html.EditorFor(model=> model.SelectedTransaction.StartDate)
+                    </td>
+                </tr>
+
+            </table>
+
+
+        </div>
+        <div class="editor-label">
+            <table>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.SelectedTransaction.TransactionTypeId)
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(model => model.SelectedTransactionType, new SelectList(Model.TransactionTypes, "Id", "Name"))
+                    </td>
+                </tr>
+            </table>
+
+
+
+        </div>
+        <p>
+            <input type="submit" value="Update" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Transaction", new { clientId = Model.ClientId.ToString(),practiceId =Model.PracticeId.ToString() }, null)
+</div>
+<script src="~/Scripts/jquery-2.0.2.js"></script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

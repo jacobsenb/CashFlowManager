@@ -1,0 +1,209 @@
+﻿@using CashFlowManager.Common.Enumerations
+@model CashFlowManager.Models.ClientModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+@using (@Html.BeginForm())
+{
+    <h2 class="subTitle">Clients:</h2>
+    @Html.ActionLink("Add New Client", "Create", "Client", new {practiceId = Model.PracticeId},null)
+
+    
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="~/Scripts/ClientGuages.js"></script>
+    
+    <div id='chart_div' style="width:100px;"></div>
+    
+    <table>
+        <tr class="tableHeader2">
+            <th></th>
+            <th>Name</th>
+            <th>Day 1</th>
+            <th>Day 2</th>
+            <th>Day 3</th>
+            <th>Day 4</th>
+            <th>Day 5</th>
+            <th>Day 6</th>
+            <th>Day 7</th>
+            <th>Month 1</th>
+            <th>Month 2</th>
+        </tr>
+
+        @foreach (var item in Model.Clients)
+        {
+            <tr>
+                <td>@Html.ActionLink("Select", "Edit", "Client", new { practiceId = Model.PracticeId, clientId = item.Id }, null) </td>
+
+                <td>@Html.DisplayFor(i => item.Name)</td>
+                @if (item.ClientPosition.Count > 0)
+                {
+                @* Day One *@
+                    if (item.ClientPosition[0].Position == Enumerations.Zone.Zone0)
+                    {
+                    <td><div style="background-color:red;" class="circle"></div></td>    
+                    }
+                    else if (item.ClientPosition[0].Position == Enumerations.Zone.Zone1)
+                    {
+                    <td><div style="background-color:orange;" class="circle"></div></td>          
+                    }
+                    else if (item.ClientPosition[0].Position == Enumerations.Zone.Zone2)
+                    {
+                    <td><div style="background-color:brown;" class="circle"></div></td>     
+                    }
+                    else if (item.ClientPosition[0].Position == Enumerations.Zone.Zone3)
+                    {
+                    <td><div style="background-color:green;" class="circle"></div></td>        
+                    }
+                @* Day Two *@
+                    if (item.ClientPosition[1].Position == Enumerations.Zone.Zone0)
+                    {
+                    <td><div style="background-color:red;" class="circle"></div></td>   
+                    }
+                    else if (item.ClientPosition[1].Position == Enumerations.Zone.Zone1)
+                    {
+                    <td><div style="background-color:orange;" class="circle"></div></td>                  
+                    }
+                    else if (item.ClientPosition[1].Position == Enumerations.Zone.Zone2)
+                    {
+                    <td><div style="background-color:brown;" class="circle"></div></td>        
+                    }
+                    else if (item.ClientPosition[1].Position == Enumerations.Zone.Zone3)
+                    {
+                    <td><div style="background-color:green;" class="circle"></div></td>         
+                    }
+                @* Day Three *@
+                    if (item.ClientPosition[2].Position == Enumerations.Zone.Zone0)
+                    {
+                    <td><div style="background-color:red;" class="circle"></div></td> 
+                    }
+                    else if (item.ClientPosition[2].Position == Enumerations.Zone.Zone1)
+                    {
+                    <td><div style="background-color:orange;" class="circle"></div></td>       
+                    }
+                    else if (item.ClientPosition[2].Position == Enumerations.Zone.Zone2)
+                    {
+                    <td><div style="background-color:brown;" class="circle"></div></td>         
+                    }
+                    else if (item.ClientPosition[2].Position == Enumerations.Zone.Zone3)
+                    {
+                    <td><div style="background-color:green;" class="circle"></div></td>         
+                    }
+                @* Day Four *@
+                    if (item.ClientPosition[3].Position == Enumerations.Zone.Zone0)
+                    {
+                    <td><div style="background-color:red;" class="circle"></div></td>   
+                    }
+                    else if (item.ClientPosition[3].Position == Enumerations.Zone.Zone1)
+                    {
+                    <td><div style="background-color:orange;" class="circle"></div></td>          
+                    }
+                    else if (item.ClientPosition[3].Position == Enumerations.Zone.Zone2)
+                    {
+                    <td><div style="background-color:brown;" class="circle"></div></td>         
+                    }
+                    else if (item.ClientPosition[3].Position == Enumerations.Zone.Zone3)
+                    {
+                    <td><div style="background-color:green;" class="circle"></div></td>   
+                    }   
+                @* Day Five *@
+                    if (item.ClientPosition[4].Position == Enumerations.Zone.Zone0)
+                    {
+                    <td><div style="background-color:red;" class="circle"></div></td>
+                    }
+                    else if (item.ClientPosition[4].Position == Enumerations.Zone.Zone1)
+                    {
+                    <td><div style="background-color:orange;" class="circle"></div></td>        
+                    }
+                    else if (item.ClientPosition[4].Position == Enumerations.Zone.Zone2)
+                    {
+                    <td><div style="background-color:brown;" class="circle"></div></td>        
+                    }
+                    else if (item.ClientPosition[4].Position == Enumerations.Zone.Zone3)
+                    {
+                    <td><div style="background-color:green;" class="circle"></div></td>        
+                    }
+                @* Day Six *@
+                    if (item.ClientPosition[5].Position == Enumerations.Zone.Zone0)
+                    {
+                    <td><div style="background-color:red;" class="circle"></div></td>   
+                    }
+                    else if (item.ClientPosition[5].Position == Enumerations.Zone.Zone1)
+                    {
+                    <td><div style="background-color:orange;" class="circle"></div></td>          
+                    }
+                    else if (item.ClientPosition[5].Position == Enumerations.Zone.Zone2)
+                    {
+                    <td><div style="background-color:brown;" class="circle"></div></td>       
+                    }
+                    else if (item.ClientPosition[5].Position == Enumerations.Zone.Zone3)
+                    {
+                    <td><div style="background-color:green;" class="circle"></div></td>         
+                    }     
+                @* Day Seven *@
+                    if (item.ClientPosition[6].Position == Enumerations.Zone.Zone0)
+                    {
+                    <td><div style="background-color:red;" class="circle"></div></td>
+                    }
+                    else if (item.ClientPosition[6].Position == Enumerations.Zone.Zone1)
+                    {
+                    <td><div style="background-color:orange;" class="circle"></div></td>         
+                    }
+                    else if (item.ClientPosition[6].Position == Enumerations.Zone.Zone2)
+                    {
+                    <td><div style="background-color:brown;" class="circle"></div></td>      
+                    }
+                    else if (item.ClientPosition[6].Position == Enumerations.Zone.Zone3)
+                    {
+                    <td><div style="background-color:green;" class="circle"></div></td>        
+                    }           
+                @* Month 1 *@
+                    if (item.ClientPosition[7].Position == Enumerations.Zone.Zone0)
+                    {
+                    <td><div style="background-color:red;" class="circle"></div></td> 
+                    }
+                    else if (item.ClientPosition[7].Position == Enumerations.Zone.Zone1)
+                    {
+                    <td><div style="background-color:orange;" class="circle"></div></td>          
+                    }
+                    else if (item.ClientPosition[7].Position == Enumerations.Zone.Zone2)
+                    {
+                    <td><div style="background-color:brown;" class="circle"></div></td>       
+                    }
+                    else if (item.ClientPosition[7].Position == Enumerations.Zone.Zone3)
+                    {
+                    <td><div style="background-color:green;" class="circle"></div></td>           
+                    } 
+                @* Month 2 *@
+                    if (item.ClientPosition[8].Position == Enumerations.Zone.Zone0)
+                    {
+                    <td><div style="background-color:red;" class="circle"></div></td>  
+                    }
+                    else if (item.ClientPosition[8].Position == Enumerations.Zone.Zone1)
+                    {
+                    <td><div style="background-color:orange;" class="circle"></div></td>          
+                    }
+                    else if (item.ClientPosition[8].Position == Enumerations.Zone.Zone2)
+                    {
+                    <td><div style="background-color:brown;" class="circle"></div></td>         
+                    }
+                    else if (item.ClientPosition[8].Position == Enumerations.Zone.Zone3)
+                    {
+                    <td><div style="background-color:green;" class="circle"></div></td>        
+                    }
+                }
+            </tr>
+        }
+
+    </table>
+
+}
+
+

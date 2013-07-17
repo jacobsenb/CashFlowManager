@@ -1,0 +1,16 @@
+c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Debug\CashFlowManager.Service.dll
+c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Debug\CashFlowManager.Service.pdb
+c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Debug\CashFlowManager.Common.dll
+c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Debug\CashFlowManager.Contract.dll
+c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Debug\CashFlowManager.Domain.dll
+c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Debug\EntityFramework.dll
+c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Debug\CashFlowManager.Common.pdb
+c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Debug\CashFlowManager.Contract.pdb
+c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Debug\CashFlowManager.Domain.pdb
+c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Debug\EntityFramework.xml
+c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\obj\Debug\CashFlowManager.Service.csprojResolveAssemblyReference.cache
+c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\obj\Debug\CashFlowManager.Service.dll
+c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\obj\Debug\CashFlowManager.Service.pdb
+c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Debug\DotNetOpenAuth.OpenId.dll
+c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Debug\DotNetOpenAuth.OpenId.xml
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Debug\AWSSDK.dll

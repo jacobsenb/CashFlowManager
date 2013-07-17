@@ -1,0 +1,80 @@
+﻿@model CashFlowManager.Models.TransactionModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Delete Transaction:</h2>
+
+@using (@Html.BeginForm() )
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>TransactionModel</legend>
+
+        <div class="editor-label">
+            @Html.HiddenFor(model => model.SelectedTransaction.Id)
+        </div>
+        <div class="editor-label">
+            @Html.HiddenFor(model => model.ClientId)
+        </div>
+        <div class="editorlbl">
+            @Html.LabelFor(model => model.SelectedTransaction.Narration)
+            @Html.DisplayFor(model => model.SelectedTransaction.Narration)
+        <div>
+
+        <div class="editorlbl">
+            @Html.LabelFor(model => model.SelectedTransaction.Amount)
+            @Html.DisplayFor(model => model.SelectedTransaction.Amount)
+        </div>
+        <div class="editor-label">
+            <table>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.SelectedTransaction.ScheduleId)
+                    </td>
+                    <td id="Frequency">
+                        @Html.DropDownListFor(model => model.SelectedSchedule, new SelectList(Model.Schedules, "Id", "Name"))
+                    </td>
+                    <td>
+                    </td>
+                    <td id="StartDatelbl">
+                        @Html.LabelFor(model => model.SelectedTransaction.StartDate)
+                    </td>
+                    <td id="StartDateEdt">
+                        @Html.DisplayFor(model=> model.SelectedTransaction.StartDate)
+                    </td>
+                </tr>
+
+            </table>
+
+
+        </div>
+        <div class="editor-label">
+            <table>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.SelectedTransaction.TransactionTypeId)
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(model => model.SelectedTransactionType, new SelectList(Model.TransactionTypes, "Id", "Name"))
+                    </td>
+                </tr>
+            </table>
+
+
+
+        </div>
+        <p>
+            <input type="submit" value="Delete" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Transaction", new { clientId = Model.ClientId.ToString(),practiceId =Model.PracticeId.ToString() }, null)
+</div>

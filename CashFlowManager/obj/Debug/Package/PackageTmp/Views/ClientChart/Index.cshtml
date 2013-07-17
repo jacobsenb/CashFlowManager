@@ -1,0 +1,63 @@
+﻿@model CashFlowManager.Models.ClientChartModel
+
+
+
+<script type="text/javascript" src="/Scripts/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<script type="text/javascript">
+    google.load("visualization", "1", { packages: ["corechart"] });
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var clientId = urlParam('clientId');
+        var numMonths = urlParam('numberMonths');
+        var practiceId = urlParam('practiceId');
+        $.get('/ClientChart/GetData?clientId=' + clientId + '&practiceId=' + practiceId + '&numberMonths=' + numMonths, {},
+            function (data) {
+                var tdata = new google.visualization.DataTable();
+
+                tdata.addColumn('string', 'Date');
+                tdata.addColumn('number', 'Income');
+                tdata.addColumn('number', 'CashOnHand');
+                tdata.addColumn('number', 'Expense');
+
+                for (var i = 0; i < data.length; i++) {
+                    tdata.addRow([data[i].DateStr, data[i].Income, data[i].CashOnHand, data[i].Expense]);
+                }
+
+                var options = {
+                    title: "Cash Flow for Six Months"
+                };
+
+                var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+                chart.draw(tdata, options);
+                
+                var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
+                chart2.draw(tdata, options);
+            });
+    }
+
+    function urlParam(name) {
+        var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        if (results == null) {
+            return null;
+        }
+        else {
+            return results[1] || 0;
+        }
+    }
+    
+    function BacktoClient() {
+        var clientId = urlParam('clientId');
+        $.get('/ClientChart/Index?clientId=' + clientId);
+
+    }
+</script>
+
+
+<div id="chart_div" style="width: 900px; height: 500px;"></div>
+<div id="chart_div2" style="width: 900px; height: 500px;"></div>
+
+<div>
+    @Html.ActionLink("Back to Client", "Edit","Client",new {practiceId= Model.PracticeId,clientId = Model.ClientId},null)
+</div>

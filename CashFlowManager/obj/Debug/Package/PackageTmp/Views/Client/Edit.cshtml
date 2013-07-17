@@ -1,0 +1,37 @@
+﻿@model CashFlowManager.Models.ClientModel
+
+@{
+    ViewBag.Title = Model.SelectedClient.Name;
+}
+
+@using (@Html.BeginForm())
+{
+
+            <h2 class="subTitle">
+                @Html.DisplayFor(model => model.SelectedClient.Name)
+            </h2>
+
+    <div>
+        @Html.ActionLink("Transactions", "Index", "Transaction", new {clientId = Model.SelectedClient.Id.ToString(),practiceId=Model.PracticeId.ToString()}, null)
+    </div>
+        <div>
+        @Html.ActionLink("Bank Accounts", "Index", "BankAccount", new {clientId = Model.SelectedClient.Id.ToString(),practiceId=Model.PracticeId.ToString()}, null)
+    </div>
+    <div>
+        @Html.ActionLink("Clients Cashflow 3 Months", "Index", "ClientChart", new {clientId = Model.SelectedClient.Id.ToString(),practiceId=Model.PracticeId.ToString(), numberMonths = 3}, null)
+    </div>
+    <div>
+        @Html.ActionLink("Clients Cashflow 6 Months", "Index", "ClientChart", new {clientId = Model.SelectedClient.Id.ToString(),practiceId=Model.PracticeId.ToString(),numberMonths = 6}, null)
+    </div>
+    <div>
+        @Html.ActionLink("Clients Cashflow 12 Months", "Index", "ClientChart", new {clientId = Model.SelectedClient.Id.ToString(),practiceId=Model.PracticeId.ToString(),numberMonths = 12}, null)
+    </div>
+}
+
+    <div>
+    @Html.ActionLink("Back to List", "Index","Client",new {practiceId= Model.PracticeId},null)
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

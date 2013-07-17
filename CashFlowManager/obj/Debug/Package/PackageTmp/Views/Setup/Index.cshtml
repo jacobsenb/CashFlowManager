@@ -1,0 +1,36 @@
+﻿@model CashFlowManager.Models.SetupModel
+
+@{
+    ViewBag.Title = "Setup";
+}
+
+@using (@Html.BeginForm())
+{
+    <div style="">
+    <h2 class="subTitle">Practice Setup:</h2>
+    </div>
+    <p >
+        @Html.ActionLink("Setup New Practice", "Create", "Practice")
+    </p>
+    <table>
+    <tr>
+        <th>Practices:</th>
+    </tr>
+
+@foreach (var item in Model.Practices) {
+
+        <tr>
+       <td>@Html.DisplayFor(i => item.Name )</td>
+            <td>
+                @Html.ActionLink("Select", "Index", "Client",new {practiceId = item.Id.ToString()},null) 
+            </td>
+        <td>
+            @Html.ActionLink("Create User", "Register", "Account",new {practiceId = item.Id.ToString()},null) 
+        </td>
+    </tr>
+}
+
+</table>
+
+
+}

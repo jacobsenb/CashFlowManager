@@ -1,0 +1,34 @@
+﻿** Warnings
+     WITH CHECK | NOCHECK option for existing data check enforcement is ignored.
+     WITH CHECK | NOCHECK option for existing data check enforcement is ignored.
+
+** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The type for column Balance in table [dbo].[BankAccount] is currently  NVARCHAR (255) NULL but is being changed to 
+         DECIMAL (18, 2) NULL. Data loss could occur.
+
+** User actions
+     Alter
+       [dbo].[BankAccount] (Table)
+     Create
+       [dbo].[UserProfile] (Table)
+       [dbo].[webpages_Membership] (Table)
+       [dbo].[webpages_OAuthMembership] (Table)
+       [dbo].[webpages_Roles] (Table)
+       [dbo].[webpages_UsersInRoles] (Table)
+       Default Constraint: <unnamed> (Default Constraint)
+       Default Constraint: <unnamed> (Default Constraint)
+       [dbo].[FK_UserProfile_Practice] (Foreign Key)
+       [dbo].[fk_RoleId] (Foreign Key)
+       [dbo].[fk_UserId] (Foreign Key)
+
+** Supporting actions
+
+The type for column Balance in table [dbo].[BankAccount] is currently  NVARCHAR (255) NULL but is being changed to  DECIMAL (18, 2) NULL. Data loss could occur.
+

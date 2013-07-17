@@ -1,0 +1,57 @@
+﻿@model CashFlowManager.Models.BankAccountModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="subTitle">Edit Bank Account</h2>
+
+@using (@Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+        <fieldset>
+        <legend></legend>
+        <div class="editor-label">
+            @Html.HiddenFor(model => model.SelectedBankAccount.Id)
+        </div>
+
+        <div class="editor-label">
+            @Html.HiddenFor(model => model.ClientId)
+        </div>
+
+        <div class="editorlbl">
+            @Html.LabelFor(model => model.SelectedBankAccount.AccountName)
+            @Html.EditorFor(model => model.SelectedBankAccount.AccountName)
+            @Html.ValidationMessageFor(model => model.SelectedBankAccount.AccountName)
+        </div>
+        <p></p>
+            <div class="editorlbl">
+                @Html.LabelFor(model => model.SelectedBankAccount.AccountNumber)
+                @Html.EditorFor(model => model.SelectedBankAccount.AccountNumber)
+                @Html.ValidationMessageFor(model => model.SelectedBankAccount.AccountNumber)
+            </div>
+        <p></p>
+        <div class="editorlbl">
+            @Html.LabelFor(model => model.SelectedBankAccount.Balance)
+            @Html.EditorFor(model => model.SelectedBankAccount.Balance)
+            @Html.ValidationMessageFor(model => model.SelectedBankAccount.Balance)
+        </div>
+
+        <p>
+            <input type="submit" value="Update" />
+        </p>
+    </fieldset>
+    
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "BankAccount", new { clientId = Model.ClientId.ToString(),practiceId =Model.PracticeId.ToString() }, null)
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

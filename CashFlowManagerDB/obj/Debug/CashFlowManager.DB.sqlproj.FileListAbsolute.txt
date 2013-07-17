@@ -1,0 +1,5 @@
+c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManagerDB\bin\Debug\CashFlowManager.DB.dacpac
+c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManagerDB\bin\Debug\CashFlowManagerDB.dll
+c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManagerDB\bin\Debug\CashFlowManagerDB.pdb
+c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManagerDB\obj\Debug\CashFlowManagerDB.dll
+c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManagerDB\obj\Debug\CashFlowManagerDB.pdb

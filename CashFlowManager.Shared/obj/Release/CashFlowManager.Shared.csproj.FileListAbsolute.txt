@@ -1,0 +1,10 @@
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Shared\bin\Release\CashFlowManager.Shared.dll
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Shared\bin\Release\CashFlowManager.Shared.pdb
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Shared\bin\Release\AWSSDK.dll
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Shared\bin\Release\CashFlowManager.Common.dll
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Shared\bin\Release\CashFlowManager.Contract.dll
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Shared\bin\Release\CashFlowManager.Common.pdb
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Shared\bin\Release\CashFlowManager.Contract.pdb
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Shared\obj\Release\CashFlowManager.Shared.csprojResolveAssemblyReference.cache
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Shared\obj\Release\CashFlowManager.Shared.dll
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Shared\obj\Release\CashFlowManager.Shared.pdb

@@ -1,0 +1,45 @@
+﻿@model CashFlowManager.Models.BankAccountModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (@Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <h2 class="subTitle">Bank Accounts</h2>
+    <div>
+        @Html.ActionLink("Create", "Create","BankAccount", new { practiceId = Model.PracticeId.ToString(),clientId= Model.ClientId.ToString() },null)
+    </div>
+
+    <table>
+    <tr class="tableHeader">
+        <th>Account Name</th>
+        <th>Account Number</th>
+        <th>Balance</th>
+
+    </tr>
+    @foreach (var item in Model.BankAccounts)
+    {
+        <tr>
+            <td class="tableDataStr">@Html.DisplayFor(i => item.AccountName)</td>
+            <td class="tableDataStr">@Html.DisplayFor(i => item.AccountNumber)</td>
+            <td class="tableDataStr">@Html.DisplayFor(i => item.Balance)</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit","BankAccount", new { practiceId = Model.PracticeId.ToString(),clientId= item.ClientId.ToString(),bankAccountId = item.Id.ToString() },null) |
+                @Html.ActionLink("Delete", "Delete","BankAccount", new { practiceId = Model.PracticeId.ToString(),clientId= item.ClientId.ToString(),bankAccountId = item.Id.ToString() },null)
+            </td>
+        </tr>
+    }
+
+</table>
+}
+<p></p>
+<div>
+    @Html.ActionLink("Back to Client", "Edit", "Client", new {clientId= Model.ClientId.ToString(), practiceId = Model.PracticeId.ToString() }, null)
+</div>
+
+<script src="~/Scripts/jquery-2.0.2.js"></script>

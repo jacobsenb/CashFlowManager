@@ -1,0 +1,34 @@
+﻿** Warnings
+     WITH CHECK | NOCHECK option for existing data check enforcement is ignored.
+     WITH CHECK | NOCHECK option for existing data check enforcement is ignored.
+
+** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       on [dbo].[UserProfile] (Unique Constraint)
+     Alter
+       [dbo].[UserProfile] (Table)
+     Create
+       [dbo].[BankAccount] (Table)
+       [dbo].[Client] (Table)
+       [dbo].[Practice] (Table)
+       [dbo].[Schedule] (Table)
+       [dbo].[Transaction] (Table)
+       [dbo].[TransactionType] (Table)
+       [dbo].[FK_BankAccount_Client] (Foreign Key)
+       [dbo].[FK_Client_Practice] (Foreign Key)
+       [dbo].[FK_Transaction_Schedule] (Foreign Key)
+       [dbo].[FK_Transaction_Client] (Foreign Key)
+       [dbo].[FK_Transaction_TransactionType] (Foreign Key)
+       [dbo].[FK_UserProfile_Practice] (Foreign Key)
+
+** Supporting actions

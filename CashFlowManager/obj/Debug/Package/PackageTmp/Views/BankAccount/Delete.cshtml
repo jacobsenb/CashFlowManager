@@ -1,0 +1,54 @@
+﻿@model CashFlowManager.Models.BankAccountModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="subTitle">Delete Bank Account</h2>
+
+@using (@Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+        <fieldset>
+        <legend></legend>
+        <div class="editor-label">
+            @Html.HiddenFor(model => model.SelectedBankAccount.Id)
+        </div>
+
+        <div class="editor-label">
+            @Html.HiddenFor(model => model.ClientId)
+        </div>
+
+        <div class="editorlbl">
+            @Html.LabelFor(model => model.SelectedBankAccount.AccountName)
+            @Html.DisplayFor(model => model.SelectedBankAccount.AccountName)
+        </div>
+        <p></p>
+            <div class="editorlbl">
+                @Html.LabelFor(model => model.SelectedBankAccount.AccountNumber)
+                @Html.DisplayFor(model => model.SelectedBankAccount.AccountNumber)
+            </div>
+        <p></p>
+        <div class="editorlbl">
+            @Html.LabelFor(model => model.SelectedBankAccount.Balance)
+            @Html.DisplayFor(model => model.SelectedBankAccount.Balance)
+        </div>
+
+        <p>
+            <input type="submit" value="Delete" />
+        </p>
+    </fieldset>
+    
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "BankAccount", new { clientId = Model.ClientId.ToString(),practiceId =Model.PracticeId.ToString() }, null)
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

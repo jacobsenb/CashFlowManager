@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Schedule]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [Name] NVARCHAR(255) NULL, 
+    [Sequence] INT NULL
+)

@@ -1,0 +1,16 @@
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Release\CashFlowManager.Service.dll
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Release\CashFlowManager.Service.pdb
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Release\AWSSDK.dll
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Release\CashFlowManager.Common.dll
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Release\CashFlowManager.Contract.dll
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Release\CashFlowManager.Domain.dll
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Release\DotNetOpenAuth.OpenId.dll
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Release\EntityFramework.dll
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Release\CashFlowManager.Common.pdb
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Release\CashFlowManager.Contract.pdb
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Release\CashFlowManager.Domain.pdb
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Release\DotNetOpenAuth.OpenId.xml
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\bin\Release\EntityFramework.xml
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\obj\Release\CashFlowManager.Service.csprojResolveAssemblyReference.cache
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\obj\Release\CashFlowManager.Service.dll
+C:\Users\Brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Service\obj\Release\CashFlowManager.Service.pdb
