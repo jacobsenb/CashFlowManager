@@ -12,6 +12,8 @@ namespace CashFlowManager.Common.POCO
         public decimal Expense { get; set; }
         public decimal CashOnHand { get; set; }
         public DateTime Date { get; set; }
+        public string DateGroup { get; set; }
+
         public string DateStr
         {
             get
