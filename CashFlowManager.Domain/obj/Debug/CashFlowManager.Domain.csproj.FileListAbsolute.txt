@@ -7,3 +7,12 @@ c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\Ca
 c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Domain\obj\Debug\CashFlowManager.Domain.dll
 c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Domain\obj\Debug\CashFlowManager.Domain.pdb
 C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManager\CashFlowManager.Domain\bin\Debug\AWSSDK.dll
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager.Domain\bin\Debug\CashFlowManager.Domain.dll.config
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager.Domain\bin\Debug\CashFlowManager.Domain.dll
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager.Domain\bin\Debug\CashFlowManager.Domain.pdb
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager.Domain\bin\Debug\AWSSDK.dll
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager.Domain\bin\Debug\EntityFramework.dll
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager.Domain\bin\Debug\EntityFramework.xml
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager.Domain\obj\Debug\CashFlowManager.Domain.csprojResolveAssemblyReference.cache
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager.Domain\obj\Debug\CashFlowManager.Domain.dll
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager.Domain\obj\Debug\CashFlowManager.Domain.pdb

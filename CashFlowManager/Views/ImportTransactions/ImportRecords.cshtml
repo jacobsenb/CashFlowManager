@@ -1,0 +1,314 @@
+﻿@model CashFlowManager.Models.ImportTransactions
+
+@{
+    ViewBag.Title = "ImportRecords";
+}
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="~/Scripts/jquery.tablednd.js"></script>
+
+<style>
+
+    .Attributes {
+        display: inline;
+        font-weight: normal;
+        color: black;
+        cursor: pointer;
+        margin-left: 20px;
+    }
+
+    .Narration {
+        color: green;
+        width: 250px;
+        border: black solid thin;
+    }
+
+    .Amount {
+        color: green;
+        width: 100px;
+        border: black solid thin;
+    }
+
+    .date {
+        width: 150px;
+    }
+
+    .tableHeader td {
+        font-weight: bold;
+    }
+
+    #cart {
+        min-height: 150px;
+        width: 190px;
+        border: 1px solid black;
+    }
+
+        #cart.hover {
+            border: 1px solid red;
+        }
+
+    table.listing,
+    .drag-cart-item table {
+        width: 800px;
+    }
+
+        table.listing, table.listing td, table.listing th,
+        .drag-cart-item table, .drag-cart-item td {
+            border-collapse: collapse;
+            border: 1px solid gray;
+            padding: 5px;
+        }
+
+    table td.name {
+        cursor: move;
+    }
+
+    table th {
+        background: #E6E6E6;
+    }
+
+    .drag-cart-item {
+        background: #FFF;
+    }
+</style>
+
+<script>
+    
+
+    function SaveTransactions() {
+
+        var returnData = [];
+        var rows = $("#TransToAdd tr.data");
+
+        rows.each(function (index, row) {
+            var val1 = $('select[name="TransactionTypeId"]', $(row));
+            var val2 = $('input[name="Narration"]', $(row));
+            var val3 = $('input[name="Amount"]', $(row));
+            var val4 = $('select[name="ScheduleId"]', $(row));
+            var val5 = $('input[name="StartDate"]', $(row));
+            var rowData = { TransactionTypeId: val1.val(), Narration: val2.val(), Amount: val3.val(), ScheduleId: val4.val(), StartDate: val5.val() };
+            returnData.push(rowData);
+        });
+
+        var transactions = JSON.stringify({ 'transactions': returnData });
+
+        var clientId = urlParam('clientId');
+        var practiceId = urlParam('practiceId');
+
+        $.ajax({
+            url: "/CashFlowManager/ImportTransactions/SaveTransactions?clientId=" + clientId + "&practiceId=" + practiceId,
+            contentType: 'application/json; charset=utf-8',
+            cache: false,
+            type: 'POST',
+            dataType: 'json',
+            traditional: true,
+            data: transactions,
+            success: function () {
+                var url = "/CashFlowManager/Transaction?clientId=" + clientId + "&practiceId=" + practiceId;
+                $(location).attr('href', url);
+            }
+        });
+    }
+
+    function urlParam(name) {
+        var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        if (results == null) {
+            return null;
+        }
+        else {
+            return results[1] || 0;
+        }
+    }
+
+    function ClearTransactions() {
+        $(".Attributes").remove();
+    }
+</script>
+
+@using (@Html.BeginForm())
+{
+
+    <h2>Records to Import:</h2>
+    <p></p>
+    <div>
+        @Html.ActionLink("Back to Client", "Edit", "Client", new { clientId = Model.ClientId.ToString(), practiceId = Model.PracticeId.ToString() }, null)
+    </div>
+        <p></p>
+    <div id="AddTrans" style="display:none;">
+        <table id="TransToAdd">
+            <tr class="tableHeader">
+                <td>Type</td>
+                <td>Narration</td>
+                <td>Amount</td>
+                <td>Frequency</td>
+                <td>StartDate</td>
+            </tr>
+            @foreach (var t in Model.TransactionsToAdd)
+            {
+                Html.RenderPartial("ImportTransRecord", t);
+            }
+
+        </table>
+
+        <p></p>
+        <input type="button" value="Save" style="float: right;" onclick="SaveTransactions();" />
+    </div>
+
+    <label style="color: gray; margin-top: 50px; margin-bottom: 10px;">Drag a transaction from table into the box below to add...</label>
+    <div id="cart" style="border: black 1px solid; width: 100%; display: block; height: 200px;">
+    </div>
+    <input type="button" style="margin-left: 10px; float: right;" value="Clear" onclick="ClearTransactions();" /> 
+       <p></p>
+    
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type='text/javascript'>
+        google.load('visualization', '1', { packages: ['table'] });
+        google.setOnLoadCallback(drawTable);
+        
+
+        function drawTable() {
+            $.get('/CashFlowManager/ImportTransactions/GetUploadedTransactions?displayRepeating=@Model.DisplayReoccurringTransaction', { "_": $.now() },
+                function (data) {
+                    var dataTable = new google.visualization.DataTable();
+
+                    if (data.length > 0) {
+                        //Adding Columns
+                        for (var t = 0; t < data[0].Columns.length; t++) {
+
+                            dataTable.addColumn('string', 'Column ' + t);
+                        }
+
+                        for (var i = 0; i < data.length; i++) {
+
+                            var row = new Array();
+                            for (var t = 0; t < data[i].Columns.length; t++) {
+                                row[t] = data[i].Columns[t];
+                            }
+
+                            dataTable.addRow(row);
+
+                        }
+                    }
+
+                    var options = {
+                        'title': 'How Much Pizza I Ate Last Night',
+                        'alternatingRowStyle': true,
+                        'cssClassNames': {tableCell: 'name', headerRow: 'header', tableRow: 'row', oddTableRow: 'alternateRow' },
+
+                        'height': '375px',
+                        'width':'900px',
+                        'page': 'enable',
+                        'pageSize': 15,
+                        'showRowNumber': true,
+                        pagingSymbols: {
+                            prev: 'Previous',
+                            next: 'Next'
+                        }
+                    };
+
+                    var table1 = new google.visualization.Table(document.getElementById('table_div'));
+                    table1.draw(dataTable, options);
+                       
+                    // Every time the table fires the "select" event, it should call your
+                    // selectHandler() function.
+                    google.visualization.events.addListener(table1, 'select', selectHandler);
+
+                    function selectHandler(e) {
+                        var table = $('table');
+                        table.find('tr td.name').bind('mousedown', function () {
+                            table.disableSelection();
+                        }).bind('mouseup', function () {
+                            table.enableSelection();
+                        }).draggable({
+                            helper: function (event) {
+                                return $('<div class="drag-cart-item"><table></table></div>').find('table').append($(event.target).closest('tr').clone());
+                            },
+                            cursorAt: {
+                                left: -5,
+                                bottom: 5
+                            },
+                            cursor: 'move',
+                            distance: 10,
+                            delay: 100,
+                            revert: 'invalid'
+                        });
+                    }
+
+                    var table = $('table');
+                    table.find('tr td.name').bind('mousedown', function () {
+                        table.disableSelection();
+                    }).bind('mouseup', function () {
+                        table.enableSelection();
+                    }).draggable({
+                        helper: function (event) {
+                            return $('<div class="drag-cart-item"><table></table></div>').find('table').append($(event.target).closest('tr').clone());
+                        },
+                        cursorAt: {
+                            left: -5,
+                            bottom: 5
+                        },
+                        cursor: 'move',
+                        distance: 10,
+                        delay: 100,
+                        revert: 'invalid'
+                    });
+
+                    $('#cart').droppable({
+                        activeClass: 'active',
+                        hoverClass: 'hover',
+                        tolerance: 'pointer',
+                        drop: function (event, ui) {
+
+                            $(".datePicker").datepicker();
+                            $("#AddTrans").show();
+
+                            var row = ui.helper.find('tr');
+                            var html = row[0].innerHTML;
+                            html = html.replace(/td/g, "label");
+                            html = "<p></p>" + html;
+                            $('#cart').append(html);
+
+                            $('#cart').children("label").removeClass('ui-draggable').addClass("Attributes");
+                            $('#cart').children("label").draggable();
+
+                            $(".Attributes").draggable({ snap: true, revert: 'invalid' });
+
+                            $.ajax({
+                                url: "/CashFlowManager/ImportTransactions/AddTransaction",
+                                cache: false,
+                                success: function (html) {
+                                    $("#TransToAdd tbody").append(html);
+
+                                    $(".Narration").droppable({
+
+                                        drop: function (event, ui) {
+                                            $(event.target).val(event.target.value + ui.draggable[0].innerText);
+                                            $(ui.draggable[0]).remove();
+                                        }
+                                    });
+
+                                    $(".Amount").droppable({
+
+                                        drop: function (event, ui) {
+                                            $(event.target).val(event.target.value + ui.draggable[0].innerText);
+                                            $(ui.draggable[0]).remove();
+                                        }
+                                    });
+                                }
+                            });
+
+                        }
+                    });
+
+                });
+
+            function setOption(prop, value) {
+                options[prop] = value;
+                sendAndDraw();
+            }
+
+        }
+    </script>
+    <div id='table_div' style="margin-top:50px"></div>
+}

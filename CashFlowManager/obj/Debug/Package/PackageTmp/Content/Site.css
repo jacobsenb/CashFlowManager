@@ -5,13 +5,13 @@
 }
 
 body {
-    background-color: #fff;
-    border-top: solid 10px #000;
     color: #333;
     font-size: .85em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-    margin: 0;
+    margin: 0px 110px 0px 110px;
     padding: 0;
+    clear: both;
+    display: block;
 }
 
 .tableDataStr {
@@ -194,13 +194,11 @@ h5, h6 {
 #body {
     background-color: #efeeef;
     clear: both;
-    padding-bottom: 35px;
 }
 
     .main-content {
-        background: url("../Images/accent.png") no-repeat;
         padding-left: 10px;
-        padding-top: 30px;
+        padding-top: 0px;
     }
 
     .featured + .main-content {
@@ -240,7 +238,7 @@ footer {
     background-color:chocolate;
     display:block;
     height:20px;
-    margin: 5px 110px 5px 110px;
+    margin: 5px 0px 5px 0px;
     padding:5px 5px 5px 5px;
     font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
     color: white;
@@ -269,6 +267,11 @@ footer {
         font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
         color: white;
     }
+
+            #login li a:hover {
+            color: #333;
+            text-decoration: none;
+        }
 
     #login a.username {
         background: none;
@@ -440,9 +443,8 @@ aside {
 
 /* login page */
 #loginForm {
-    border-right: solid 2px #c8c8c8;
     float: left;
-    width: 55%;
+    width: 100%;
 }
 
     #loginForm .validation-error {
@@ -864,3 +866,25 @@ tr.pager td {
             margin: 0;
         }
 }
+    /* Tables
+    ----------------------------------------------------------*/
+    .row {
+        font-weight:normal;
+        cursor: pointer;
+        background: white;
+    }
+    .alternateRow {
+        font-weight:normal;
+        cursor: pointer;
+        background: lightgray;
+    }
+    .header {
+        font-weight: bold;
+        font-size: 15px;
+        color: black;
+        background:yellowgreen
+    }
+
+    .date {
+        width: 100px;
+    }

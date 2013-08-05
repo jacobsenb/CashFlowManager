@@ -12,20 +12,24 @@
             </h2>
 
     <div>
+        @Html.ActionLink("Import Transactions", "Index", "ImportTransactions", new {clientId = Model.SelectedClient.Id.ToString(),practiceId=Model.PracticeId.ToString()}, null)
+    </div>
+        <div>
         @Html.ActionLink("Transactions", "Index", "Transaction", new {clientId = Model.SelectedClient.Id.ToString(),practiceId=Model.PracticeId.ToString()}, null)
     </div>
         <div>
         @Html.ActionLink("Bank Accounts", "Index", "BankAccount", new {clientId = Model.SelectedClient.Id.ToString(),practiceId=Model.PracticeId.ToString()}, null)
     </div>
     <div>
-        @Html.ActionLink("Clients Cashflow 3 Months", "Index", "ClientChart", new {clientId = Model.SelectedClient.Id.ToString(),practiceId=Model.PracticeId.ToString(), numberMonths = 3}, null)
+        @Html.ActionLink("Clients Cashflow", "Index", "ClientChart", new {clientId = Model.SelectedClient.Id.ToString(),practiceId=Model.PracticeId.ToString(), numberMonths = 3}, null)
     </div>
     <div>
-        @Html.ActionLink("Clients Cashflow 6 Months", "Index", "ClientChart", new {clientId = Model.SelectedClient.Id.ToString(),practiceId=Model.PracticeId.ToString(),numberMonths = 6}, null)
+        @Html.ActionLink("Income and Expense by Month", "IncomeExpense", "ClientChart", new {clientId = Model.SelectedClient.Id.ToString(),practiceId=Model.PracticeId.ToString(), numberMonths = 3}, null)
     </div>
-    <div>
-        @Html.ActionLink("Clients Cashflow 12 Months", "Index", "ClientChart", new {clientId = Model.SelectedClient.Id.ToString(),practiceId=Model.PracticeId.ToString(),numberMonths = 12}, null)
+        <div>
+        @Html.ActionLink("Income and Expense by Week", "IncomeExpenseWeek", "ClientChart", new {clientId = Model.SelectedClient.Id.ToString(),practiceId=Model.PracticeId.ToString(), numberMonths = 3}, null)
     </div>
+
 }
 
     <div>

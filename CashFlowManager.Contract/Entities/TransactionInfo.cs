@@ -41,7 +41,7 @@ namespace CashFlowManager.Contract.Entities
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DisplayName("Start Date")]
-        [Required(ErrorMessage="The Start Date is required")]
+        [Required(ErrorMessage = "The Start Date is required")]
         public DateTime? StartDate { get; set; }
 
         [IgnoreProperty]
@@ -108,7 +108,7 @@ namespace CashFlowManager.Contract.Entities
                 {
                     schType = Enumerations.ScheduleType.Yearly.ToString();
                 }
-                    return schType;
+                return schType;
             }
         }
 
@@ -146,6 +146,24 @@ namespace CashFlowManager.Contract.Entities
             }
         }
 
-    }
+        [IgnoreProperty]
+        public List<ScheduleInfo> Schedules { get; set; }
 
+        [IgnoreProperty]
+        public List<TransactionTypeInfo> TransactionTypes { get; set; }
+
+        [IgnoreProperty]
+        public string DateStr
+        {
+            get
+            {
+                if (StartDate.HasValue)
+                {
+                    return StartDate.Value.Date.ToShortDateString();
+
+                }
+                return string.Empty;
+            }
+        }
+    }
 }

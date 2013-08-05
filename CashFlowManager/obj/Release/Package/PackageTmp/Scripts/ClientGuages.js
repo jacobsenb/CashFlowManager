@@ -1,9 +1,16 @@
-﻿google.load('visualization', '1', { packages: ['gauge'] });
-google.setOnLoadCallback(drawChart);
+﻿
 
-function drawChart() {
+google.load('visualization', '1', { packages: ['gauge'] });
+
+
+
+function hello() {
+    alert("Hello");
+}
+
+function drawChart(clientId) {
     var practiceId = urlParam('practiceId');
-    $.get('/Client/GetData?practiceId=' + practiceId, {},
+    $.get('/CashFlowManager/Client/GetData?practiceId=' + practiceId + '&clientId=' + clientId, {},
         function (data) {
             var tdata = new google.visualization.DataTable();
             tdata.addColumn('string', 'Label');
@@ -14,18 +21,21 @@ function drawChart() {
             }
 
             var options = {
-                width: 1000,
+                min: 0,
+                max: 100,
+                width: 810,
                 height: 120,
                 greenFrom: 0,
-                greenTo: 50,
+                greenTo: 25,
                 redFrom: 75,
                 redTo: 100,
-                yellowFrom: 50,
+                yellowFrom: 25,
                 yellowTo: 75,
-                minorTicks: 5
+                minorTicks: 5,
+                animation: {easing:'in',duration:2000}                
             };
 
-            var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+            var chart = new google.visualization.Gauge(document.getElementById(clientId));
             chart.draw(tdata, options);
         });
 }

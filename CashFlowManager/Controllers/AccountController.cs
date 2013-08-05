@@ -37,6 +37,12 @@ namespace CashFlowManager.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
+            if (!WebSecurity.Initialized)
+            {
+                WebSecurity.InitializeDatabaseConnection("SimpleMembership", "UserProfile", "UserId", "UserName", autoCreateTables: true);    
+            }
+            CheckForAdminUser();
+               
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
                 var roles = (SimpleRoleProvider)Roles.Provider;
@@ -63,6 +69,43 @@ namespace CashFlowManager.Controllers
             // If we got this far, something failed, redisplay form
             ModelState.AddModelError("", "The user name or password provided is incorrect.");
             return View(model);
+        }
+
+        private void CheckForAdminUser()
+        {
+            var roles = (SimpleRoleProvider)Roles.Provider;
+            var membership = (SimpleMembershipProvider)Membership.Provider;
+            if (!roles.RoleExists("Admin"))
+            {
+                roles.CreateRole("Admin");
+            }
+            if (!roles.RoleExists("User"))
+            {
+                roles.CreateRole("User");
+            }
+            if (membership.GetUser("Admin", false) == null)
+            {
+                membership.CreateUserAndAccount("Admin", "Admin");
+            }
+
+            var r = roles.GetRolesForUser("Admin");
+            int i = 0;
+
+            // If user has no roles 
+            if (r.Length == 0)
+            {
+                roles.AddUsersToRoles(new[] { "Admin" }, new[] { "Admin" });
+            }
+
+            // User may have another role so checking if they have the admin role
+            while (i < r.Length)
+            {
+                if (r[i] != "Admin")
+                {
+                    roles.AddUsersToRoles(new[] { "Admin" }, new[] { "Admin" });
+                }
+                i++;
+            }
         }
 
         //

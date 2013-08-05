@@ -60,7 +60,7 @@ namespace CashFlowManager.Models
             Schedules = service.GetScheduleTypes();
             TransactionTypes = service.GetTransactionTypes();
             
-            if (trans != null)
+            if (trans != null && trans.Count > 0)
             {
                 SelectedTransaction = trans.First();
                 SelectedSchedule = SelectedTransaction.ScheduleId;

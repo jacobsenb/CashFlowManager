@@ -12,58 +12,125 @@
         border-bottom-color: black;
        
     }
+
+
 </style>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.load('visualization', '1', { packages: ['table'] });
+    google.setOnLoadCallback(drawTable);
+    google.setOnLoadCallback(drawTable2);
+
+
+    function drawTable() {
+        var clientId = urlParam('clientId');
+        var practiceId = urlParam('practiceId');
+        
+        $.get('/CashFlowManager/Transaction/GetExpenseTransactions?clientId=' + clientId + '&practiceId=' + practiceId, { "_": $.now() },
+            function (data) {
+
+                var dataTable = new google.visualization.DataTable();
+
+                if (data.length > 0) {
+                    //Adding Columns
+                    dataTable.addColumn('string', 'Frequency');
+                    dataTable.addColumn('string', 'Date');
+                    dataTable.addColumn('string', 'Narration');
+                    dataTable.addColumn('number', 'Amount ');
+                    dataTable.addColumn('string', '');
+
+                    for (var i = 0; i < data.length; i++) {
+                        var link1 = '<a href="/CashFlowManager/Transaction/Edit?transactionId=' + data[i].Id + '&amp;clientId=' + data[i].ClientId + '&amp;practiceId= @Model.PracticeId.ToString() ">Edit</a>';
+                        var link2 = '<a href="/CashFlowManager/Transaction/Delete?transactionId=' + data[i].Id + '&amp;clientId=' + data[i].ClientId + '&amp;practiceId=@Model.PracticeId.ToString()">Delete</a>';
+                        dataTable.addRow([data[i].ScheduleType, data[i].DateStr, data[i].Narration, { v: data[i].Amount }, link1 + ' ' + link2]);
+                    }
+                }
+
+                var options = {
+                    'title': 'How Much Pizza I Ate Last Night',
+                    'alternatingRowStyle': true,
+                    'cssClassNames': { headerRow: 'header', tableRow: 'alternateRow' },
+                    'page': 'enable',
+                    'pageSize': 10,
+                    'showRowNumber': true,
+                    pagingSymbols: {
+                        prev: 'Previous',
+                        next: 'Next'
+                    },
+                    allowHtml: true
+                };
+
+                var table1 = new google.visualization.Table(document.getElementById('chart_div'));
+                table1.draw(dataTable, options);
+            }
+        );
+    }
+    
+    function drawTable2() {
+        var clientId = urlParam('clientId');
+        var practiceId = urlParam('practiceId');
+
+        $.get('/CashFlowManager/Transaction/GetIncomeTransactions?clientId=' + clientId + '&practiceId=' + practiceId, { "_": $.now() },
+            function (data) {
+
+                var dataTable = new google.visualization.DataTable();
+
+                if (data.length > 0) {
+                    //Adding Columns
+                    dataTable.addColumn('string', 'Frequency');
+                    dataTable.addColumn('string', 'Date');
+                    dataTable.addColumn('string', 'Narration');
+                    dataTable.addColumn('number', 'Amount ');
+                    dataTable.addColumn('string', '');
+
+                    for (var i = 0; i < data.length; i++) {
+                        var link1 = '<a href="/CashFlowManager/Transaction/Edit?transactionId=' + data[i].Id + '&amp;clientId=' + data[i].ClientId + '&amp;practiceId= @Model.PracticeId.ToString() ">Edit</a>';
+                        var link2 = '<a href="/CashFlowManager/Transaction/Delete?transactionId=' + data[i].Id + '&amp;clientId=' + data[i].ClientId + '&amp;practiceId=@Model.PracticeId.ToString()">Delete</a>';
+                        dataTable.addRow([data[i].ScheduleType, data[i].DateStr, data[i].Narration, data[i].Amount, link1 + ' ' + link2]);
+                    }
+                }
+
+                var options = {
+                    'title': 'How Much Pizza I Ate Last Night',
+                    'alternatingRowStyle': true,
+                    'cssClassNames': { headerRow: 'header', tableRow: 'alternateRow' },
+                    'page': 'enable',
+                    'pageSize': 10,
+                    'showRowNumber': true,
+                    pagingSymbols: {
+                        prev: 'Previous',
+                        next: 'Next'
+                    },
+                    allowHtml: true
+                };
+
+                var table1 = new google.visualization.Table(document.getElementById('chart_div2'));
+                table1.draw(dataTable, options);
+            }
+        );
+        }
+
+    function urlParam(name) {
+        var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        if (results == null) {
+            return null;
+        } else {
+            return results[1] || 0;
+        }
+    }
+</script>
 
 <p>
     @Html.ActionLink("Create New", "Create", new { clientId = Model.ClientId.ToString(),practiceId = Model.PracticeId.ToString() })
-        @Html.ActionLink("Back to Client", "Edit", "Client", new {clientId= Model.ClientId.ToString(), practiceId = Model.PracticeId.ToString() }, null)
+    @Html.ActionLink("Back to Client", "Edit", "Client", new {clientId= Model.ClientId.ToString(), practiceId = Model.PracticeId.ToString() }, null)
 </p>
-<h3>Expense:</h3>
-<table>
-    <tr class="tableHeader">
-        <th>Frequency</th>
-        <th>Start Date</th>
-        <th>Narration</th>
-        <th>Amount</th>
-    </tr>
-    @foreach (var item in Model.ExpenseTransactions)
-    {
-        <tr>
-            <td class="tableDataStr">@Html.DisplayFor(i => item.ScheduleType)</td>
-            <td class="tableDataStr">@Html.DisplayFor(i => item.StartDate)</td>
-            <td class="tableDataStr">@Html.DisplayFor(i => item.Narration)</td>
-            <td class="tableDataAmt">@Html.DisplayFor(i => item.Amount)</td>
-            <td>
-                @Html.ActionLink("Edit", "Edit","Transaction", new { transactionId = item.Id.ToString(),clientId= item.ClientId.ToString(),practiceId = Model.PracticeId.ToString() },null)
-                @Html.ActionLink("Delete", "Delete","Transaction", new { transactionId = item.Id.ToString(),clientId= item.ClientId.ToString(),practiceId = Model.PracticeId.ToString() },null)
-            </td>
-        </tr>
-    }
-
-</table>
+<h3>Expenses:</h3>
+<p></p>
+    <div id="chart_div"></div>
 
 <h3>Income:</h3>
-<table>
-    <tr class="tableHeader">
-        <th>Frequency</th>
-        <th>Start Date</th>
-        <th>Narration</th>
-        <th>Amount</th>
-    </tr>
-    @foreach (var item in Model.IncomeTransactions)
-    {
-        <tr>
-            <td class="tableDataStr">@Html.DisplayFor(i => item.ScheduleType)</td>
-            <td class="tableDataStr">@Html.DisplayFor(i => item.StartDate)</td>
-            <td class="tableDataStr">@Html.DisplayFor(i => item.Narration)</td>
-            <td class="tableDataAmt">@Html.DisplayFor(i => item.Amount)</td>
-            <td>
-            @Html.ActionLink("Edit", "Edit","Transaction", new { transactionId = item.Id.ToString(),clientId= item.ClientId.ToString(),practiceId = Model.PracticeId.ToString() },null)
-            @Html.ActionLink("Delete", "Delete","Transaction", new { transactionId = item.Id.ToString(),clientId= item.ClientId.ToString(),practiceId = Model.PracticeId.ToString() },null)
-        </tr>
-    }
-
-</table>
+<p></p>
+    <div id="chart_div2"></div>
 <p></p>
 <div>
     @Html.ActionLink("Back to Client", "Edit", "Client", new {clientId= Model.ClientId.ToString(), practiceId = Model.PracticeId.ToString() }, null)

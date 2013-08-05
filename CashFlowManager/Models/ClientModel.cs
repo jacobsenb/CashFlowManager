@@ -8,6 +8,7 @@ using CashFlowManager.Common.POCO;
 using CashFlowManager.Contract;
 using CashFlowManager.Contract.Entities;
 using CashFlowManager.Service;
+using WebMatrix.WebData;
 
 namespace CashFlowManager.Models
 {
@@ -28,6 +29,7 @@ namespace CashFlowManager.Models
         public void LoadData(string practiceId)
         {
             ICashFlowManagerService service = new CashFlowManagerService();
+
             PracticeId = new Guid(practiceId);
             Clients = service.GetClients(PracticeId);
 
@@ -37,7 +39,7 @@ namespace CashFlowManager.Models
             PopulateClientPosition();
 
         }
-        
+
         public void PopulateClientPosition()
         {
             TransactionHelper helper = new TransactionHelper();
@@ -181,13 +183,34 @@ namespace CashFlowManager.Models
         private decimal ExpenseToCashOnHandPercentage(decimal cashOnHand, decimal Expense)
         {
             decimal percentage = 0;
+
             if (cashOnHand > 0)
             {
-                percentage = (Expense / cashOnHand) * 100;
-                return percentage;
+                percentage = (Expense/cashOnHand)*100;
+
+                if (percentage < 0)
+                {
+                    percentage = 100;
+                }
+            }
+            else
+            {
+                if (Expense > 0)
+                    percentage = 100;
             }
 
+            return Math.Round(percentage, 2);
+
+
             return percentage;
+        }
+
+        public UserProfile GetUser(string userName)
+        {
+            ICashFlowManagerService service = new CashFlowManagerService();
+            UserProfile user;
+            user = service.GetUser(userName);
+            return user;
         }
 
     }

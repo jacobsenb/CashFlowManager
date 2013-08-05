@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using CashFlowManager.Common.Enumerations;
@@ -35,6 +36,58 @@ namespace CashFlowManager.Models
             SummaryChartData = helper.SummariseData(results, BankAccounts);
         }
 
+
+
+        public List<ClientChartData> SummaryChartGroupByMonth(List<ClientChartData> data)
+        {
+            List<ClientChartData> groupByMonth = new List<ClientChartData>();
+            var grouped = (from d in data select d).GroupBy(g => g.Date.ToString("MMM"));
+            
+            foreach (var g in grouped)
+            {
+                var sumExp = (from i in g select i.Expense).Sum();
+                var sumCoH = (from i in g select i.CashOnHand).Sum();
+                var sumInc = (from i in g select i.Income).Sum();
+
+                groupByMonth.Add(new ClientChartData()
+                {
+                    CashOnHand = sumCoH,
+                    Expense = sumExp,
+                    Income = sumInc,
+                    DateGroup = g.Key
+                });
+
+            }
+
+            return groupByMonth;
+        }
+
+        public List<ClientChartData> SummaryChartGroupByWeeks(List<ClientChartData> data)
+        {
+            List<ClientChartData> GroupBWeek = new List<ClientChartData>();
+
+             DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
+            Calendar cal = dfi.Calendar;
+            var grouped = (from d in data select d).GroupBy(g => cal.GetWeekOfYear(g.Date, CalendarWeekRule.FirstFullWeek, DayOfWeek.Sunday));
+
+            foreach (var g in grouped)
+            {
+                var sumExp = (from i in g select i.Expense).Sum();
+                var sumCoH = (from i in g select i.CashOnHand).Sum();
+                var sumInc = (from i in g select i.Income).Sum();
+
+                GroupBWeek.Add(new ClientChartData()
+                {
+                    CashOnHand = sumCoH,
+                    Expense = sumExp,
+                    Income = sumInc,
+                    DateGroup = g.Key.ToString()
+                });
+
+            }
+
+            return GroupBWeek;
+        }
 
 
 

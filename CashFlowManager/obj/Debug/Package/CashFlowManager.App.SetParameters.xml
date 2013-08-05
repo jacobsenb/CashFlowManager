@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <setParameter name="IIS Web Application Name" value="CashFlowManager.App_deploy" />
+  <setParameter name="IIS Web Application Name" value="Default Web Site/CashFlowManager.App_deploy" />
   <setParameter name="IIS Web Application Pool Name" value="ASP.NET v4.0" />
-  <setParameter name="IisVirtualDirectoryPhysicalPath" value="C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManager\CashFlowManager_deploy" />
-  <setParameter name="CashFlowManagerEntities-Web.config Connection String" value="metadata=res://*/CashFlowManager.csdl|res://*/CashFlowManager.ssdl|res://*/CashFlowManager.msl;provider=System.Data.SqlClient;provider connection string='data source=(LocalDB)\v11.0;attachdbfilename=&quot;C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManager\CashFlowManager\App_Data\CashFlowManager.mdf&quot;;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework'" />
-  <setParameter name="SimpleMembership-Web.config Connection String" value="Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=CashFlowManager;Data Source=(LocalDB)\v11.0;attachdbfilename=&quot;C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManager\CashFlowManager\App_Data\CashFlowManager.mdf&quot;;" />
+  <setParameter name="IisVirtualDirectoryPhysicalPath" value="C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager_deploy" />
+  <setParameter name="CashFlowManagerEntities-Web.config Connection String" value="metadata=res://*/CashFlowManager.csdl|res://*/CashFlowManager.ssdl|res://*/CashFlowManager.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DEV-D010060;initial catalog=CashFlowManager;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" />
+  <setParameter name="SimpleMembership-Web.config Connection String" value="Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=CashFlowManager;Data Source=localhost" />
 </parameters>

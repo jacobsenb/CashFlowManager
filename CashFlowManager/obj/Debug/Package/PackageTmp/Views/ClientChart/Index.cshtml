@@ -1,63 +1,104 @@
 ﻿@model CashFlowManager.Models.ClientChartModel
 
-
-
-<script type="text/javascript" src="/Scripts/jquery-1.6.4.min.js"></script>
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-
-<script type="text/javascript">
-    google.load("visualization", "1", { packages: ["corechart"] });
-    google.setOnLoadCallback(drawChart);
-    function drawChart() {
-        var clientId = urlParam('clientId');
-        var numMonths = urlParam('numberMonths');
-        var practiceId = urlParam('practiceId');
-        $.get('/ClientChart/GetData?clientId=' + clientId + '&practiceId=' + practiceId + '&numberMonths=' + numMonths, {},
-            function (data) {
-                var tdata = new google.visualization.DataTable();
-
-                tdata.addColumn('string', 'Date');
-                tdata.addColumn('number', 'Income');
-                tdata.addColumn('number', 'CashOnHand');
-                tdata.addColumn('number', 'Expense');
-
-                for (var i = 0; i < data.length; i++) {
-                    tdata.addRow([data[i].DateStr, data[i].Income, data[i].CashOnHand, data[i].Expense]);
-                }
-
-                var options = {
-                    title: "Cash Flow for Six Months"
-                };
-
-                var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
-                chart.draw(tdata, options);
-                
-                var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
-                chart2.draw(tdata, options);
-            });
-    }
-
-    function urlParam(name) {
-        var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
-        if (results == null) {
-            return null;
-        }
-        else {
-            return results[1] || 0;
-        }
-    }
-    
-    function BacktoClient() {
-        var clientId = urlParam('clientId');
-        $.get('/ClientChart/Index?clientId=' + clientId);
-
-    }
-</script>
-
-
-<div id="chart_div" style="width: 900px; height: 500px;"></div>
-<div id="chart_div2" style="width: 900px; height: 500px;"></div>
-
 <div>
     @Html.ActionLink("Back to Client", "Edit","Client",new {practiceId= Model.PracticeId,clientId = Model.ClientId},null)
 </div>
+
+
+<button id="3months">3 Months </button>
+<button id="6months">6 Months </button>
+<button  id="12months">12 Months </button>
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load("visualization", "1", { packages: ["corechart"] });
+        google.load('visualization', '1', { 'packages': ['annotatedtimeline'] });
+        google.setOnLoadCallback(drawChart);
+        var chart;
+        var chart2;
+        var tdata;
+        var tdata2;
+        var threeMonthsButton = document.getElementById('3months');
+        var sixMonthsButton = document.getElementById('6months');
+        var twelveMonthsButton = document.getElementById('12months');
+        var options;
+
+        function drawChart() {
+
+            tdata = new google.visualization.DataTable();
+            tdata.addColumn('string', 'Date');
+            tdata.addColumn('number', 'Income');
+            tdata.addColumn('number', 'CashOnHand');
+            tdata.addColumn('number', 'Expense');
+            tdata2 = new google.visualization.DataTable();
+            tdata2.addColumn('datetime', 'Date');
+            tdata2.addColumn('number', 'Income');
+            tdata2.addColumn('number', 'CashOnHand');
+            tdata2.addColumn('number', 'Expense');
+            
+            chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+            chart2 = new google.visualization.AnnotatedTimeLine(document.getElementById('chart_div2'));
+
+
+            // Add our over/out handlers.
+            GetDataDrawGraph(3);
+        }
+
+        function ShowChart(numberMonths) {
+            options = {
+
+                title: "Cash Flow for " + numberMonths + " Months"
+            };
+            chart.draw(tdata, options);
+            //chart2.draw(tdata2, { displayAnnotations: true });
+        }
+
+        threeMonthsButton.onclick = function () {
+            GetDataDrawGraph(3);
+        };
+        sixMonthsButton.onclick = function () {
+            GetDataDrawGraph(6);
+        };
+        twelveMonthsButton.onclick = function () {
+            GetDataDrawGraph(12);
+        };
+
+        function GetDataDrawGraph(numberMonths) {
+            var clientId = urlParam('clientId');
+            var numMonths = numberMonths;
+            var practiceId = urlParam('practiceId');
+            $.get('/CashFlowManager/ClientChart/GetData?clientId=' + clientId + '&practiceId=' + practiceId + '&numberMonths=' + numMonths, {},
+                function (data) {
+                    var numRows = tdata.getNumberOfRows();
+                    if (numRows > 0) {
+                        tdata.removeRows(0, numRows);
+                        tdata2.removeRows(0, numRows);
+                    }
+
+                    for (var i = 0; i < data.length; i++) {
+                        tdata.addRow([data[i].DateStr, data[i].Income, data[i].CashOnHand, data[i].Expense]);
+                        tdata2.addRow([data[i].DateStart, data[i].Income, data[i].CashOnHand, data[i].Expense]);
+                    }
+
+                    ShowChart(numberMonths);
+                });
+        }
+
+
+        function urlParam(name) {
+            var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            if (results == null) {
+                return null;
+            }
+            else {
+                return results[1] || 0;
+            }
+        }
+    </script>
+  </head>
+  <body>
+      <div id="chart_div" style="width: 900px; height: 500px;"></div>
+      <div id="chart_div2" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>

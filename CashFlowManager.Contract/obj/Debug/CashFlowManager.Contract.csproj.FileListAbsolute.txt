@@ -10,3 +10,15 @@ c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\Ca
 c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Contract\bin\Debug\CashFlowManager.Domain.pdb
 c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManager.Contract\bin\Debug\EntityFramework.xml
 C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManager\CashFlowManager.Contract\bin\Debug\AWSSDK.dll
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager.Contract\bin\Debug\CashFlowManager.Contract.dll
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager.Contract\bin\Debug\CashFlowManager.Contract.pdb
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager.Contract\bin\Debug\AWSSDK.dll
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager.Contract\bin\Debug\CashFlowManager.Common.dll
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager.Contract\bin\Debug\CashFlowManager.Domain.dll
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager.Contract\bin\Debug\EntityFramework.dll
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager.Contract\bin\Debug\CashFlowManager.Common.pdb
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager.Contract\bin\Debug\CashFlowManager.Domain.pdb
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager.Contract\bin\Debug\EntityFramework.xml
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager.Contract\obj\Debug\CashFlowManager.Contract.csprojResolveAssemblyReference.cache
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager.Contract\obj\Debug\CashFlowManager.Contract.dll
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManager.Contract\obj\Debug\CashFlowManager.Contract.pdb

@@ -7,10 +7,11 @@
     <meta name="viewport" content="width=device-width" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
     <header>
-        <div style="background-color: yellowgreen; display: block; margin: 20px 110px 5px 110px; padding: 20px 40px 30px 40px; color: white">
+        <div style="background-color: yellowgreen; display: block; padding: 20px 40px 30px 40px; color: white">
             <div>
                 <p class="site-title">@Html.ActionLink("Cash Flow Manager", "Index", "Home")</p>
             </div>
@@ -31,9 +32,9 @@
                     }
                     @if (WebSecurity.IsAuthenticated)
                     {
-                        if ((Roles.IsUserInRole(WebSecurity.CurrentUserName, "Admin") || Roles.IsUserInRole(WebSecurity.CurrentUserName, "User")))
+                        if (Roles.IsUserInRole(WebSecurity.CurrentUserName, "User"))
                         {
-                            <li>@Html.ActionLink("Clients", "Index", "Client", new {PracticeId = Session["practiceId"]},null)</li>                            
+                            <li>@Html.ActionLink("Clients", "Index", "Client", new {practiceId = Session["practiceId"]},null)</li>                            
                         }
                     }
                     <li>@Html.ActionLink("About", "About", "Home")</li>
@@ -49,15 +50,9 @@
             @RenderBody()
         </section>
     </div>
-    <footer>
-        <div class="content-wrapper">
-            <div class="float-left">
-                <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
-            </div>
-        </div>
-    </footer>
 
-    @Scripts.Render("~/bundles/jquery")
+
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

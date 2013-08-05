@@ -46,6 +46,42 @@ BEGIN
 END
 GO
 
+
+IF EXISTS (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME='webpages_UsersInRoles')
+BEGIN
+	DELETE FROM webpages_UsersInRoles
+	DROP TABLE webpages_UsersInRoles
+END
+GO
+
+IF EXISTS (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME='webpages_Roles')
+BEGIN
+	DELETE FROM webpages_Roles
+	DROP TABLE webpages_Roles
+END
+GO
+
+IF EXISTS (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME='webpages_OAuthMembership')
+BEGIN
+	DELETE FROM webpages_OAuthMembership
+	DROP TABLE webpages_OAuthMembership
+END
+GO
+
+IF EXISTS (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME='webpages_Membership')
+BEGIN
+	DELETE FROM webpages_Membership
+	DROP TABLE webpages_Membership
+END
+GO
+
+IF EXISTS (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME='UserProfile')
+BEGIN
+	DELETE FROM UserProfile
+	DROP TABLE UserProfile
+END
+GO
+
 IF EXISTS (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME='Practice')
 BEGIN
 	DELETE FROM Practice

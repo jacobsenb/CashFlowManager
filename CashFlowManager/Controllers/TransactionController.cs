@@ -21,6 +21,24 @@ namespace CashFlowManager.Controllers
             return View(model);
         }
 
+        public ActionResult GetExpenseTransactions(string clientId, string practiceId)
+        {
+            TransactionModel model = new TransactionModel();
+            model.ClientId = new Guid(clientId);
+            model.PracticeId = new Guid(practiceId);
+            model.LoadData(new Guid(clientId));
+            return Json(model.ExpenseTransactions, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetIncomeTransactions(string clientId, string practiceId)
+        {
+            TransactionModel model = new TransactionModel();
+            model.ClientId = new Guid(clientId);
+            model.PracticeId = new Guid(practiceId);
+            model.LoadData(new Guid(clientId));
+            return Json(model.IncomeTransactions, JsonRequestBehavior.AllowGet);
+        }
+
         //
         // GET: /Transaction/
         public ActionResult Create(string clientId, string practiceId)
@@ -59,11 +77,11 @@ namespace CashFlowManager.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(TransactionModel model)
+        public ActionResult Delete(TransactionModel model, String transactionId, string clientId, string practiceId)
         {
             ICashFlowManagerService service = new CashFlowManagerService();
-            service.DeleteTransaction(model.SelectedTransaction.Id);
-            return RedirectToAction("Index", "Transaction", new { clientId = model.ClientId.ToString(), practiceId = model.PracticeId.ToString() });
+            service.DeleteTransaction(new Guid(transactionId));
+            return RedirectToAction("Index", "Transaction", new { clientId = clientId, practiceId = practiceId });
         }
 
 

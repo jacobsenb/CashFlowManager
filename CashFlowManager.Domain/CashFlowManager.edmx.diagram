@@ -12,7 +12,7 @@
         <EntityTypeShape EntityType="CashFlowManagerModel.Transaction" Width="1.5" PointX="6.1025201054767333" PointY="25.078376498575498" />
         <EntityTypeShape EntityType="CashFlowManagerModel.TransactionType" Width="1.5" PointX="2.4925797723664807" PointY="17.861069717379785" />
         <EntityTypeShape EntityType="CashFlowManagerModel.UserProfile" Width="1.5" PointX="2.36043905762976" PointY="26.810691696969183" />
-        <EntityTypeShape EntityType="CashFlowManagerModel.webpages_Membership" Width="1.5" PointX="8.9987329454155329" PointY="7.4357848947103067" />
+        <EntityTypeShape EntityType="CashFlowManagerModel.webpages_Membership" Width="1.5" PointX="3.625" PointY="8.5" />
         <EntityTypeShape EntityType="CashFlowManagerModel.webpages_OAuthMembership" Width="1.5" PointX="6.683982954679049" PointY="27.002508041915721" />
         <EntityTypeShape EntityType="CashFlowManagerModel.webpages_Roles" Width="1.5" PointX="4.2593544722811112" PointY="30.835311978513054" />
         <AssociationConnector Association="CashFlowManagerModel.FK_BankAccount_Client" />

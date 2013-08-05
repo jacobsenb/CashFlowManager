@@ -79,8 +79,7 @@
     <Build Include="Schema\Tables\webpages_UsersInRoles.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Schema\Scripts\Post-Deployment\StaticData\ScheduleData.sql" />
-    <PostDeploy Include="Schema\Scripts\Post-Deployment\StaticData\TransactionType.sql" />
+    <PostDeploy Include="Schema\Scripts\Post-Deployment\StaticData\PostData.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CashFlowManager.DB.refactorlog" />

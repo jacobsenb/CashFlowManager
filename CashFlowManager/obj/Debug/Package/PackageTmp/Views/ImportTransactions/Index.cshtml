@@ -1,0 +1,24 @@
+﻿@model CashFlowManager.Models.ImportTransactions
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Import Transactions:</h2>
+
+<p></p>
+<div>
+    @Html.ActionLink("Back to Client", "Edit", "Client", new { clientId = Model.ClientId.ToString(), practiceId = Model.PracticeId.ToString() }, null)
+</div>
+<p></p>
+
+
+@using (Html.BeginForm("ImportRecords", "ImportTransactions", new { practiceId = Model.PracticeId, clientId = Model.ClientId, displayRepeating= Model.DisplayReoccurringTransaction }, FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    <div class="editor-label">@Html.LabelFor(m => Model.DisplayReoccurringTransaction)</div>
+     <div class="editor-field">@Html.EditorFor(m => Model.DisplayReoccurringTransaction)</div>
+
+    <input id="uploadFile" name="uploadFile" type="file" />
+    <input id="subButton" type="submit" value="UploadFile" title="Upload File" />
+}

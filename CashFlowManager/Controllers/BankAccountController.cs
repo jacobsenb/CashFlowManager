@@ -22,6 +22,14 @@ namespace CashFlowManager.Controllers
             return View(model);
         }
 
+        public ActionResult GetBankAccounts(string clientId, string practiceId)
+        {
+            BankAccountModel model = new BankAccountModel();
+            model.Load(new Guid(clientId), new Guid(practiceId));
+
+            return Json(model.BankAccounts, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Create(string clientId, string practiceId)
         {
             BankAccountModel model = new BankAccountModel();

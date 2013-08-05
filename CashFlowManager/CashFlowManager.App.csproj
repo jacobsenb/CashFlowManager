@@ -54,6 +54,7 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.JScript" />
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Postal">
       <HintPath>..\packages\postal.0.8.2\lib\net45\Postal.dll</HintPath>
     </Reference>
@@ -205,6 +206,7 @@
     <Compile Include="Controllers\ClientChartController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImportTransactionsController.cs" />
     <Compile Include="Controllers\PracticeController.cs" />
     <Compile Include="Controllers\SetupController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
@@ -216,6 +218,7 @@
     <Compile Include="Models\BankAccountModel.cs" />
     <Compile Include="Models\ClientChartModel.cs" />
     <Compile Include="Models\ClientModel.cs" />
+    <Compile Include="Models\ImportTransactions.cs" />
     <Compile Include="Models\PracticeModel.cs" />
     <Compile Include="Models\SetupModel.cs" />
     <Compile Include="Models\TransactionModel.cs" />
@@ -226,6 +229,9 @@
     <Content Include="App_Data\CashFlowManager_log.ldf">
       <DependentUpon>CashFlowManager.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\Images\CSR-in-Business.jpg" />
+    <Content Include="Content\Images\Questions.jpg" />
+    <Content Include="Content\Images\website-photo-state-incentive-page.jpg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -284,18 +290,23 @@
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\CashFlowManager.pubxml" />
     <None Include="Scripts\jquery-2.0.2.intellisense.js" />
+    <Content Include="Images\Icons\Add.png" />
     <Content Include="Scripts\ClientGuages.js" />
     <Content Include="Scripts\jquery-2.0.2.js" />
     <Content Include="Scripts\jquery-2.0.2.min.js" />
+    <Content Include="Scripts\jquery-migrate-1.1.1.js" />
+    <Content Include="Scripts\jquery-migrate-1.1.1.min.js" />
+    <Content Include="Scripts\jquery.cycle.lite.js" />
+    <Content Include="Scripts\jquery.tablednd.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Scripts\Transaction.js" />
-    <Content Include="Scripts\jquery-2.0.2.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery-ui-1.8.24.js" />
-    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\Transaction.js" />
+    <Content Include="Scripts\jquery-2.0.2.min.map" />
+    <Content Include="Scripts\jquery-ui-1.8.24.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
@@ -362,6 +373,12 @@
     <Content Include="Views\Account\ConfirmationFailure.cshtml" />
     <Content Include="Views\Emails\RegEmail.cshtml" />
     <Content Include="Views\Emails\_ViewStart.cshtml" />
+    <Content Include="Views\ImportTransactions\Index.cshtml" />
+    <Content Include="Views\ImportTransactions\ImportRecords.cshtml" />
+    <Content Include="Views\ImportTransactions\ImportTransRecord.cshtml" />
+    <Content Include="Views\ImportTransactions\SaveTransactions.cshtml" />
+    <Content Include="Views\ClientChart\IncomeExpense.cshtml" />
+    <Content Include="Views\ClientChart\IncomeExpenseWeek.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CashFlowManager.Common\CashFlowManager.Common.csproj">
@@ -388,6 +405,9 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ImportUploads\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -406,7 +426,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>62413</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51283/</IISUrl>
+          <IISUrl>http://localhost:51283/CashFlowManager</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -1,0 +1,18 @@
+﻿@model CashFlowManager.Contract.Entities.TransactionInfo
+
+@{
+    Layout = null;
+}
+
+
+    
+
+<tr class="data">
+    <td>@Html.DropDownListFor(model => model.TransactionTypeId, new SelectList(Model.TransactionTypes, "Id", "Name"))</td>
+    <td >@Html.TextBoxFor(m=> Model.Narration,new{@class="Narration"})</td>
+    <td style="width:80px;">@Html.TextBoxFor(m=> Model.Amount,new{@class="Amount"})</td>
+    <td>@Html.DropDownListFor(model => model.ScheduleId, new SelectList(Model.Schedules, "Id", "Name"))</td>
+    <td>@Html.EditorFor(model => model.StartDate,new{@class="date"})@Html.ValidationMessageFor(model => model.StartDate)</td>
+</tr>
+
+

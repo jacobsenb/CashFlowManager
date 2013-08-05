@@ -3,3 +3,8 @@ c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\Ca
 c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManagerDB\bin\Debug\CashFlowManagerDB.pdb
 c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManagerDB\obj\Debug\CashFlowManagerDB.dll
 c:\users\brett.jacobsen\documents\visual studio 2012\Projects\CashFlowManager\CashFlowManagerDB\obj\Debug\CashFlowManagerDB.pdb
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManagerDB\bin\Debug\CashFlowManager.DB.dacpac
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManagerDB\bin\Debug\CashFlowManagerDB.dll
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManagerDB\bin\Debug\CashFlowManagerDB.pdb
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManagerDB\obj\Debug\CashFlowManagerDB.dll
+C:\Users\Brett.jacobsen\Documents\Visual Studio 2012\Projects\CashFlowManagerGitHub\CashFlowManagerDB\obj\Debug\CashFlowManagerDB.pdb

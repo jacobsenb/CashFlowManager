@@ -4,42 +4,81 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.load('visualization', '1', { packages: ['table'] });
+    google.setOnLoadCallback(drawTable);
+
+
+    function drawTable() {
+        var clientId = urlParam('clientId');
+        var practiceId = urlParam('practiceId');
+
+        $.get('/CashFlowManager/BankAccount/GetBankAccounts?clientId=' + clientId + '&practiceId=' + practiceId, { "_": $.now() },
+            function (data) {
+
+                var dataTable = new google.visualization.DataTable();
+
+                if (data.length > 0) {
+                    //Adding Columns
+                    dataTable.addColumn('string', 'Account Name');
+                    dataTable.addColumn('string', 'Account Number');
+                    dataTable.addColumn('number', 'Balance');
+                    dataTable.addColumn('string', '');
+
+                    for (var i = 0; i < data.length; i++) {
+                        var link1 = '<a href="/CashFlowManager/BankAccount/Edit?bankAccountId=' + data[i].Id + '&amp;clientId=' + data[i].ClientId + '&amp;practiceId= @Model.PracticeId.ToString() ">Edit</a>';
+                        var link2 = '<a href="/CashFlowManager/BankAccount/Delete?bankAccountId=' + data[i].Id + '&amp;clientId=' + data[i].ClientId + '&amp;practiceId=@Model.PracticeId.ToString()">Delete</a>';
+                        dataTable.addRow([data[i].AccountName, data[i].AccountNumber, data[i].Balance, link1 + ' ' + link2]);
+                    }
+                }
+
+                var options = {
+                    'title': 'How Much Pizza I Ate Last Night',
+                    'alternatingRowStyle': true,
+                    'cssClassNames': { headerRow: 'header', tableRow: 'alternateRow' },
+                    'width': '100%',
+                    'page': 'enable',
+                    'pageSize': 10,
+                    'showRowNumber': true,
+                    pagingSymbols: {
+                        prev: 'Previous',
+                        next: 'Next'
+                    },
+                    allowHtml: true
+                };
+
+                var table1 = new google.visualization.Table(document.getElementById('chart_div'));
+                table1.draw(dataTable, options);
+            }
+        );
+        }
+
+        function urlParam(name) {
+            var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            if (results == null) {
+                return null;
+            } else {
+                return results[1] || 0;
+            }
+        }
+</script>
 
 @using (@Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
+    <p></p>
     <h2 class="subTitle">Bank Accounts</h2>
     <div>
-        @Html.ActionLink("Create", "Create","BankAccount", new { practiceId = Model.PracticeId.ToString(),clientId= Model.ClientId.ToString() },null)
+        @Html.ActionLink("Create", "Create", "BankAccount", new {practiceId = Model.PracticeId.ToString(), clientId = Model.ClientId.ToString()}, null)
     </div>
-
-    <table>
-    <tr class="tableHeader">
-        <th>Account Name</th>
-        <th>Account Number</th>
-        <th>Balance</th>
-
-    </tr>
-    @foreach (var item in Model.BankAccounts)
-    {
-        <tr>
-            <td class="tableDataStr">@Html.DisplayFor(i => item.AccountName)</td>
-            <td class="tableDataStr">@Html.DisplayFor(i => item.AccountNumber)</td>
-            <td class="tableDataStr">@Html.DisplayFor(i => item.Balance)</td>
-            <td>
-                @Html.ActionLink("Edit", "Edit","BankAccount", new { practiceId = Model.PracticeId.ToString(),clientId= item.ClientId.ToString(),bankAccountId = item.Id.ToString() },null) |
-                @Html.ActionLink("Delete", "Delete","BankAccount", new { practiceId = Model.PracticeId.ToString(),clientId= item.ClientId.ToString(),bankAccountId = item.Id.ToString() },null)
-            </td>
-        </tr>
-    }
-
-</table>
+    <p></p>
+    <div id="chart_div"></div>
+    <p></p>
+    <div>
+        @Html.ActionLink("Back to Client", "Edit", "Client", new {clientId = Model.ClientId.ToString(), practiceId = Model.PracticeId.ToString()}, null)
+    </div>
 }
-<p></p>
-<div>
-    @Html.ActionLink("Back to Client", "Edit", "Client", new {clientId= Model.ClientId.ToString(), practiceId = Model.PracticeId.ToString() }, null)
-</div>
-
 <script src="~/Scripts/jquery-2.0.2.js"></script>
