@@ -30,4 +30,3 @@ Settings.RollbackOnFailure = true
 
 Template.InstanceType = t1.micro
 Template.SecurityGroup = default
-
